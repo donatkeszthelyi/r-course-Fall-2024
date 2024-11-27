@@ -87,22 +87,13 @@ print(unique_ingredients_count)
 What are the 10 most frequently used ingredients? If there are ties, you can list more than 10.
 
 ```{r}
-#Dataframe for the frequencies of all the ingredients in descending order
-ingredient_frequencies <- cocktail_clean |>
+#Dataframe for the top 10 (or more if there are ties on the 10th place) ingredients
+top_ingredients <- cocktail_clean |>
+  select(ingredients) |>
+  mutate(ingredients = str_trim(ingredients)) |>
   count(ingredients) |>
-  arrange(desc(n))
-
-#List the top 10 distinct frequencies
-top_10_frequencies <- ingredient_frequencies |>
-  distinct(n) |>
-  slice_head(n = 10) |>
-  pull(n)
-
-#Dataframe for all the ingredients that have a frequency, which is included in the top 10 frequencies
-top_ingredients <- ingredient_frequencies |>
-  filter(n %in% top_10_frequencies) |>
-  arrange(desc(n), ingredients) |>
-  rename(frequency = n, ingredient = ingredients)
+  arrange(desc(n)) |>
+  slice_max(n = 10, order_by = n)
 
 print(top_ingredients)
 ```
@@ -125,7 +116,8 @@ print(cocktails_with_most_ingredients)
 
 ```{r}
 #Dataframe for the rare ingredients
-rare_ingredients <- ingredient_frequencies |>
+rare_ingredients <- cocktail_clean |>
+  count(ingredients) |>
   filter(n == 1)
   
 #Counting the number of rare ingredients
