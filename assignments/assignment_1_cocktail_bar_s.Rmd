@@ -125,7 +125,7 @@ print(cocktails_with_most_ingredients)
 
 ```{r}
 #Dataframe for the rare ingredients
-rare_ingredients <- ingredient_counts |>
+rare_ingredients <- ingredient_frequencies |>
   filter(n == 1)
   
 #Counting the number of rare ingredients
