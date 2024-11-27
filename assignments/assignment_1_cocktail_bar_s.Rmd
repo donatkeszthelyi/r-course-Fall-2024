@@ -92,14 +92,14 @@ ingredient_frequencies <- cocktail_clean |>
   count(ingredients) |>
   arrange(desc(n))
 
-#Dataframe for the top 10 distinct frequencies
+#List the top 10 distinct frequencies
 top_10_frequencies <- ingredient_frequencies |>
   distinct(n) |>
   slice_head(n = 10) |>
   pull(n)
 
 #Dataframe for all the ingredients that have a frequency, which is included in the top 10 frequencies
-top_ingredients <- sorted_ingredients |>
+top_ingredients <- ingredient_frequencies |>
   filter(n %in% top_10_frequencies) |>
   arrange(desc(n), ingredients) |>
   rename(frequency = n, ingredient = ingredients)
