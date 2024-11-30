@@ -60,7 +60,6 @@ In your discussion of the findings, briefly interpret the results of the above a
 Read the dataset used in this assignment. Pay attention to the extension of the datafile.
 
 ```{r}
-knitr::opts_chunk$set(echo = FALSE)
 #Importing libraries
 library(tidyverse)
 library(readxl)
@@ -71,8 +70,7 @@ library(car)
 library(lmtest)
 library(lm.beta)
 
-#Setting the relative datapath
-set_here()
+#Setting the relative path for the data file
 data_path <- here("..", "data/assignment_3_dataset_.xlsx")
 
 #Reading the data
@@ -367,8 +365,8 @@ simple_model_stats <- simple_model_stats %>%
   rename(
     Unstandardized_B = estimate,
     Std_Error = std.error,
-    t_Statistic = statistic,
-    P_Value = p.value,
+    t_statistic = statistic,
+    p_value = p.value,
     Conf_Low = conf.low,
     Conf_High = conf.high,
     Standardized_Beta = standardized_beta
@@ -387,11 +385,11 @@ __Simple Model Degrees of Freedom (df):__ 3 (Model), 155 (Residuals)
 
 __Simple Model Coefficients:__
 
-| **Term**          | **Unstandardized B** | **Std Error** | **t Statistic** | **P Value** | **Conf Low** | **Conf High** | **Standardized Beta** |
+| **Term**          | **Unstandardized B** | **Std Error** | **t-statistic** | **p-value** | **Conf Low** | **Conf High** | **Standardized Beta** |
 |-------------------|----------------------|---------------|-----------------|-------------|--------------|---------------|-----------------------|
 | *(Intercept)*     | 8.31                 | 0.952         | 8.73            | 3.85e-15    | 6.43         | 10.2          | NA                    |
 | *age*             | -0.0845              | 0.0231        | -3.65           | 3.55e-4     | -0.130       | -0.0388       | -0.281                |
-| *sexmale*         | 0.131                | 0.232         | 0.565           | 5.73e-1     | -0.328       | 0.590         | 0.0435                |
+| *sex(male)*       | 0.131                | 0.232         | 0.565           | 5.73e-1     | -0.328       | 0.590         | 0.0435                |
 
 
 Create the more complex model based on the results of the model diagnostics. Also, get the results that needs to be reported based on the What to report section.
@@ -427,8 +425,8 @@ final_complex_model_stats <- final_complex_model_stats %>%
   rename(
     Unstandardized_B = estimate,
     Std_Error = std.error,
-    t_Statistic = statistic,
-    P_Value = p.value,
+    t_statistic = statistic,
+    p_value = p.value,
     Conf_Low = conf.low,
     Conf_High = conf.high,
     Standardized_Beta = standardized_beta
@@ -447,11 +445,11 @@ __Final Complex Model Degrees of Freedom (df):__ 7 (Model), 151 (Residuals)
 
 __Final Complex Model Coefficients:__
 
-| **Term**             | **Unstandardized B** | **Std Error** | **t Statistic** | **P Value** | **Conf Low** | **Conf High** | **Standardized Beta** |
+| **Term**             | **Unstandardized B** | **Std Error** | **t-statistic** | **p-value** | **Conf Low** | **Conf High** | **Standardized Beta** |
 |----------------------|----------------------|---------------|-----------------|-------------|--------------|---------------|-----------------------|
 | *(Intercept)*        | 1.94                 | 1.70          | 1.14            | 0.255       | -1.42        | 5.31          | NA                    |
 | *age*                | -0.0340              | 0.0236        | -1.44           | 0.151       | -0.0806      | 0.0126        | -0.113                |
-| *sexmale*            | 0.316                | 0.213         | 1.48            | 0.140       | -0.104       | 0.736         | 0.105                 |
+| *sex(male)*          | 0.316                | 0.213         | 1.48            | 0.140       | -0.104       | 0.736         | 0.105                 |
 | *STAI_trait*         | -0.0132              | 0.0271        | -0.488          | 0.626       | -0.0668      | 0.0403        | -0.0443               |
 | *pain_cat*           | 0.0834               | 0.0285        | 2.93            | 0.00396     | 0.0271       | 0.140         | 0.257                 |
 | *mindfulness*        | -0.136               | 0.127         | -1.08           | 0.284       | -0.386       | 0.114         | -0.0860               |
