@@ -39,6 +39,22 @@ cocktail_data <- read_tsv("https://raw.githubusercontent.com/nthun/cocktail-bala
 print(cocktail_data)
 ```
 
+### The head of the database
+
+| Name                  | ABV   | Acid | Sugar | Type  | Index | Instructions    | Ingredients       | NCOTW       |
+|-----------------------|-------|------|-------|-------|-------|-----------------|-------------------|-------------|
+| Pisco Sour            | 12.1  | 0.68 | 7.2   | eggw… | 5     | Dry shake, …    | 2 oz pisco…       | "not…       |
+| Pink Lady             | 12.4  | 0.64 | 9     | eggw… | 6     | Dry shake, …    | 1 1/2 oz P…       | "not…       |
+| Clover Club           | 13.6  | 0.49 | 6.7   | eggw… | 7     | Dry shake, …    | 2 oz Plymo…       | "<a …       |
+| Whiskey Sour          | 15.2  | 0.53 | 7.1   | eggw… | 8     | Dry shake, …    | 2 oz rye (…       | "not…       |
+| Daiquiri with Mor…    | 14.7  | 0.94 | 8.7   | shak… | 9     | Shake, coup…    | 2 oz white…       | "<a …       |
+| Honeysuckle           | 15    | 0.85 | 8.9   | shak… | 10    | Shake, coup…    | 2 oz white…       | "<a …       |
+| Classic Daiquiri      | 15    | 0.85 | 8.9   | shak… | 11    | Shake, coup…    | 2 oz white…       | "<a …       |
+| Blood and Sand        | 15.6  | 0.19 | 8     | shak… | 12    | Shake, coup…    | 1 oz Scotc…       | "<a …       |
+| Alexander             | 16.4  | 0    | 3.1   | shak… | 13    | Shake, coup…    | 2 oz Cogna…       | "not…       |
+| Hemingway Daiquiri    | 16.5  | 0.98 | 5.1   | shak… | 14    | Shake, coup…    | 2 oz white…       | "<a …       |
+*45 more rows*
+
 ## 2. Transform the data table and clean the ingredient variable!
 
 The ingredients are currently in a single cell for each cocktail. It would be better to put them in separate rows. Also, the variable should be cleaned of all quantities (e.g. 1/2 oz, 2 dashes, etc.), and the indicator of alcohol content (e.g. 47.3% abv). You will need to use this cleaned table in later tasks.
@@ -52,6 +68,22 @@ cocktail_clean <- cocktail_data |>
 
 print(cocktail_clean)
 ```
+
+### The head of the cleaned database
+
+| Name         | ABV   | Acid | Sugar | Type     | Index | Instructions       | Ingredients       | NCOTW   |
+|--------------|-------|------|-------|----------|-------|--------------------|-------------------|---------|
+| Pisco Sour   | 12.1  | 0.68 | 7.2   | eggwhite | 5     | Dry shake, shake…  | pisco             | not …   |
+| Pisco Sour   | 12.1  | 0.68 | 7.2   | eggwhite | 5     | Dry shake, shake…  | egg white         | not …   |
+| Pisco Sour   | 12.1  | 0.68 | 7.2   | eggwhite | 5     | Dry shake, shake…  | lime juice        | not …   |
+| Pisco Sour   | 12.1  | 0.68 | 7.2   | eggwhite | 5     | Dry shake, shake…  | simple syrup      | not …   |
+| Pink Lady    | 12.4  | 0.64 | 9     | eggwhite | 6     | Dry shake, shake…  | Plymouth gin      | not …   |
+| Pink Lady    | 12.4  | 0.64 | 9     | eggwhite | 6     | Dry shake, shake…  | egg white         | not …   |
+| Pink Lady    | 12.4  | 0.64 | 9     | eggwhite | 6     | Dry shake, shake…  | lemon juice       | not …   |
+| Pink Lady    | 12.4  | 0.64 | 9     | eggwhite | 6     | Dry shake, shake…  | Grenadine         | not …   |
+| Pink Lady    | 12.4  | 0.64 | 9     | eggwhite | 6     | Dry shake, shake…  | simple syrup      | not …   |
+| Pink Lady    | 12.4  | 0.64 | 9     | eggwhite | 6     | Dry shake, shake…  | Lairds Applejack  | not …   |
+*213 more rows*
 
 ## 3. All ingredients in alphabetical order
 
@@ -70,6 +102,22 @@ unique_ingredients <- all_ingredients |>
 print(unique_ingredients)
 ```
 
+### The head of the unique ingredients table
+
+| Ingredients                     |
+|---------------------------------|
+| absinthe                        |
+| Absolut Citron vodka            |
+| agar-clarified grapefruit juice |
+| Amer Picon                      |
+| Angostura bitters               |
+| apple brandy                    |
+| Benedictine                     |
+| blanco tequila                  |
+| bourbon                         |
+| Campari                         |
+*52 more rows*
+
 ## 4. Number of unique ingredients
 
 How many different ingredients you will need?
@@ -81,6 +129,8 @@ unique_ingredients_count <- unique_ingredients |>
 
 print(unique_ingredients_count)
 ```
+
+### Unique ingredient count: 62
 
 ## 5. What are the top 10 ingredients?
 
@@ -98,6 +148,22 @@ top_ingredients <- cocktail_clean |>
 print(top_ingredients)
 ```
 
+### The top ingredients
+
+| Ingredients         | Count |
+|---------------------|-------|
+| lemon juice         | 15    |
+| simple syrup        | 14    |
+| gin                 | 13    |
+| sweet vermouth      | 13    |
+| Angostura bitters   | 12    |
+| lime juice          | 12    |
+| saline solution     | 10    |
+| water               | 10    |
+| rye                 | 8     |
+| Cognac              | 6     |
+| Luxardo Maraschino  | 6     |
+
 ## 6. Which cocktail(s) has/have the most ingredients?
 
 Count the number of ingredients and filter all the cocktails that has that many.
@@ -111,6 +177,17 @@ cocktails_with_most_ingredients <- cocktail_clean |>
 
 print(cocktails_with_most_ingredients)
 ```
+
+### The cocktails with the most ingredients
+
+| Name                | Ingredient Counts |
+|---------------------|-------------------|
+| Blender Margarita   | 6                 |
+| Carbonated Negroni  | 6                 |
+| Clover Club         | 6                 |
+| De La Louisiane     | 6                 |
+| Pink Lady           | 6                 |
+| Vieux Carre         | 6                 |
 
 ## 7. How many ingredients appear in only one cocktail (rare ingredient)?
 
@@ -127,6 +204,8 @@ rare_ingredient_count <- rare_ingredients |>
 print(rare_ingredient_count)
 ```
 
+### Number of rare ingredients: 28
+
 ## 8. Which cocktail has an ingredient that is only used in one cocktail?
 
 ```{r}
@@ -142,6 +221,22 @@ cocktails_with_rare_ingredients <- cocktail_clean |>
 print(cocktails_with_rare_ingredients)
 ```
 
+### The head of the table of cocktails with rare ingredients
+
+| Name                              |
+|-----------------------------------|
+| Pisco Sour                        |
+| Pink Lady                         |
+| Clover Club                       |
+| Blood and Sand                    |
+| Alexander                         |
+| Cosmopolitan (Modern/Bastardized) |
+| 20th Century Cocktail             |
+| Aviation                          |
+| Last Word                         |
+| Blackthorn                        |
+*12 more rows*
+
 ## 9. What are the cocktails without rare ingredients?
 
 ```{r}
@@ -153,6 +248,22 @@ cocktails_without_rare_ingredients <- cocktail_clean |>
 
 print(cocktails_without_rare_ingredients)
 ```
+
+### The head of the table of cocktails without rare ingredients
+
+| Name                        |
+|-----------------------------|
+| Whiskey Sour                |
+| Daiquiri with More Lime     |
+| Honeysuckle                 |
+| Classic Daiquiri            |
+| Hemingway Daiquiri          |
+| Brown Derby                 |
+| Gold Rush                   |
+| Southside                   |
+| Bee's Knees                 |
+| Fresh Lime Gimlet           |
+*23 more rows*
 
 ## 10. Create a cheat sheet for the bartender!
 
@@ -178,6 +289,23 @@ for (cocktail in cocktail_names) {
 
 print(cocktail_cheat_sheet)
 ```
+
+### An example slice from the cheat sheet
+
+| Name                            | absinthe | Absolut Citron vodka | agar-clarified grapefruit juice | Amer Picon | Angostura bitters | apple brandy | Benedictine | blanco tequila | bourbon | Campari |
+|---------------------------------|----------|----------------------|---------------------------------|------------|-------------------|--------------|-------------|----------------|---------|---------|
+| Pisco Sour                      | ""       | ""                   | ""                              | ""         | ""                | ""           | ""          | ""             | ""      | ""      |
+| Pink Lady                       | ""       | ""                   | ""                              | ""         | ""                | ""           | ""          | ""             | ""      | ""      |
+| Clover Club                     | ""       | ""                   | ""                              | ""         | ""                | ""           | ""          | ""             | ""      | ""      |
+| Whiskey Sour                    | ""       | ""                   | ""                              | ""         | ""                | ""           | ""          | ""             | ""      | ""      |
+| Daiquiri with More Lime         | ""       | ""                   | ""                              | ""         | ""                | ""           | ""          | ""             | ""      | ""      |
+| Honeysuckle                     | ""       | ""                   | ""                              | ""         | ""                | ""           | ""          | ""             | ""      | ""      |
+| Classic Daiquiri                | ""       | ""                   | ""                              | ""         | ""                | ""           | ""          | ""             | ""      | ""      |
+| Blood and Sand                  | ""       | ""                   | ""                              | ""         | ""                | ""           | ""          | ""             | ""      | ""      |
+| Alexander                       | ""       | ""                   | ""                              | ""         | ""                | ""           | ""          | ""             | ""      | ""      |
+| Hemingway Daiquiri              | ""       | ""                   | ""                              | ""         | ""                | ""           | ""          | ""             | ""      | ""      |
+| Brown Derby                     | ""       | ""                   | ""                              | ""         | ""                | ""           | ""          | ""             | "X"     | ""      |
+*52 more columns and 44 more rows*
 
 
 Congrats, the bar is now officially open!

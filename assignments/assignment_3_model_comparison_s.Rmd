@@ -71,7 +71,7 @@ library(lmtest)
 library(lm.beta)
 
 #Setting the relative path for the data file
-data_path <- here("..", "data/assignment_3_dataset_.xlsx")
+data_path <- here("", "data/assignment_3_dataset_.xlsx")
 
 #Reading the data
 data_raw <- read_excel(data_path)
