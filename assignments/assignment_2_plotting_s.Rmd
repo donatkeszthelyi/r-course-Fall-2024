@@ -34,7 +34,7 @@ The 2020-09-22 TidyTueday datasets are about climbing expeditions. From the thre
 
 ```{r}
 #Reading the data
-expeditions_data <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2020/2020-09-22/expeditions.csv")
+expeditions_data <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/main/data/2020/2020-09-22/expeditions.csv")
 
 #Selecting the most frequent peaks and dropping the rest
 top_peaks <- expeditions_data |>
@@ -79,7 +79,7 @@ Notes:
 
 ```{r}
 #Reading the data
-phd_data <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2019/2019-02-19/phd_by_field.csv")
+phd_data <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/main/data/2019/2019-02-19/phd_by_field.csv")
 
 #Aggregating the data (number of phds) by broad field and year
 phd_by_field <- phd_data |>
@@ -114,7 +114,7 @@ Notes:
 
 ```{r}
 #Read the data
-commute_data <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2019/2019-11-05/commute.csv")
+commute_data <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/main/data/2019/2019-11-05/commute.csv")
 
 #Transform the data for plotting to a new dataframe
 commute_by_state <- commute_data |>
